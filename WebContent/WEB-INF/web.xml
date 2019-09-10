@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+	<display-name>webapp</display-name>
+	<welcome-file-list>
+		<welcome-file>/jsp/index.jsp</welcome-file>
+	</welcome-file-list>
+
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>info.sjd.conf.ApplicationConfiguration</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+	<servlet>
+		<servlet-name>main-servlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>
+                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                info.sjd.conf.ApplicationConfiguration
+            </param-value>
+        </init-param>
+	</servlet>
+	<servlet>
+        <servlet-name>loginservlet</servlet-name>
+        <servlet-class>info.sjd.controller.LoginServlet</servlet-class>
+	</servlet>
+    <servlet>
+		<servlet-name>checkoutservlet</servlet-name>
+		<servlet-class>main.java.com.javaTask.controller.CheckoutServlet</servlet-class>
+	</servlet>
+    <servlet>
+		<servlet-name>orderservlet</servlet-name>
+		<servlet-class>main.java.com.javaTask.controller.OrderServlet</servlet-class>
+	</servlet>
+    <servlet>
+		<servlet-name>historyservlet</servlet-name>
+		<servlet-class>main.java.com.javaTask.controller.HistoryServlet</servlet-class>
+	</servlet>
+    <servlet>
+		<servlet-name>cartservlet</servlet-name>
+		<servlet-class>main.java.com.javaTask.controller.CartServlet</servlet-class>
+	</servlet>
+    <servlet>
+		<servlet-name>removeservlet</servlet-name>
+		<servlet-class>main.java.com.javaTask.controller.RemoveServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>main-servlet</servlet-name>
+		<url-pattern>/jsp/index.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginservlet</servlet-name>
+		<url-pattern>/loginservlet</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>orderservlet</servlet-name>
+        <url-pattern>/orderservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkoutservlet</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>historyservlet</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cartservlet</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removeservlet</servlet-name>
+        <url-pattern>/remove</url-pattern>
+    </servlet-mapping>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/custom-not-found-page.html</location>
+	</error-page>
+</web-app>
